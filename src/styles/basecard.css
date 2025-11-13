@@ -1,0 +1,130 @@
+/* Styles extracted from BaseCard.vue */
+
+.animated-lines {
+
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(250, 198, 87, 0.575) 0px,
+    rgba(255, 255, 255, 0.527) 6px,
+    transparent 6px,
+    transparent 42px
+  );
+
+  background-size: 42px 42px;
+  opacity: 0.55;
+  mix-blend-mode: overlay;
+
+  animation: slideLines 2.5s linear infinite;
+}
+
+@keyframes slideLines {
+  from { background-position: 0 0; }
+  to { background-position: 42px 42px; }
+}
+
+
+.pokeball-spin {
+  transform-origin: center center; 
+  animation: pokeballSpin 2s linear infinite;
+}
+
+@keyframes pokeballSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+
+.pokeball-wrap {
+  transform: translate(-20%, -30%) scale(1);
+  opacity: 1;
+  animation: pokeballEntry 1s cubic-bezier(.2,.9,.3,1) forwards;
+}
+
+@keyframes pokeballEntry {
+  from { transform: translate(-20%, -30%) scale(1); opacity: 1; }
+  80%  { opacity: 1; }
+  to   { transform: translate(5%, 5%) scale(0); opacity: 0; }
+}
+
+
+.center-burst .burst-outer {
+  width: 160px;
+  height: 160px;
+  position: relative;
+  display: block;
+  transform: rotate(20deg);
+  background: #6A74DE;
+
+  animation: burstPop 240ms cubic-bezier(.2,.9,.3,1) forwards, burstStretch 600ms 180ms cubic-bezier(.2,.9,.3,1) forwards;
+}
+.center-burst .burst-outer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #6A74DE;
+  transform: rotate(135deg);
+}
+
+.center-burst .burst-inner {
+  width: 96px;
+  height: 96px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(20deg) scale(0);
+  background: #C4C7F2; 
+
+  animation: burstInnerPop 320ms 80ms cubic-bezier(.2,.9,.3,1) forwards, innerPulse 500ms 420ms cubic-bezier(.2,.9,.3,1) forwards;
+}
+.center-burst .burst-inner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #C4C7F2;
+  transform: rotate(135deg);
+}
+
+@keyframes burstPop {
+  from { transform: scale(0) rotate(20deg); opacity: 0; }
+  to   { transform: scale(1) rotate(20deg); opacity: 1; }
+}
+
+@keyframes burstInnerPop {
+  from { transform: translate(-50%, -50%) rotate(20deg) scale(0); opacity: 0; }
+  to   { transform: translate(-50%, -50%) rotate(20deg) scale(1); opacity: 1; }
+}
+
+
+@keyframes burstStretch {
+  0%   { transform: rotate(20deg) scaleX(1) translateY(0); }
+  40%  { transform: rotate(20deg) scaleX(1.25) translateY(-12px); }
+  70%  { transform: rotate(20deg) scaleX(0.9) translateY(6px); }
+  100% { transform: rotate(20deg) scaleX(1) translateY(0); }
+}
+
+
+@keyframes innerPulse {
+  0%   { transform: translate(-50%, -50%) rotate(20deg) scale(1); }
+  50%  { transform: translate(-50%, -50%) rotate(20deg) scale(0.9); }
+  100% { transform: translate(-50%, -50%) rotate(20deg) scale(1); }
+}
+
+.silhouette {
+  filter: brightness(0) saturate(100%);
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.silhouette.revealed {
+  filter: none;
+  opacity: 1;
+  transition: filter 260ms ease, opacity 260ms ease;
+}
