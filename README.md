@@ -11,7 +11,7 @@ Instrucciones rápidas para ejecutar el proyecto en tu máquina:
 - Instalar dependencias:
 
 ```cmd
-npm install
+npm install --legacy-peer-deps
 ```
 
 - Ejecutar en modo desarrollo (servidor con hot-reload):
