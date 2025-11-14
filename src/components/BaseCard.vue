@@ -112,8 +112,6 @@ async function refreshResults() {
           await sleep(retryDelayMs)
           continue
         }
-
-
         pokemonSvgUrl.value = svgUrl
         pokeTypes.value = candidate?.data?.types?.map((t: any) => t.type?.name).filter(Boolean) ?? []
         pokeWeight.value = candidate?.data?.weight ?? null

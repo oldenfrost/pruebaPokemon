@@ -28,4 +28,3 @@ const value = computed<string>({
 </template>
 
 
-text-white/80
